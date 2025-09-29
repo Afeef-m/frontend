@@ -1,0 +1,617 @@
+{
+  "info": {
+    "_postman_id": "b28d680f-d55a-4011-b343-cbd17d898a0b",
+    "name": "User Module",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "41775050",
+    "_collection_link": "https://ish-team.postman.co/workspace/SignSite-crm~cb9f8a9a-11e4-4ba0-b167-e5bf4f8a1ccc/collection/36208060-b28d680f-d55a-4011-b343-cbd17d898a0b?action=share&source=collection_link&creator=41775050"
+  },
+  "item": [
+    {
+      "name": "delete user  image",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "company_id",
+            "value": "{{company_id}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "{{stage}}/user/86/image",
+          "host": ["{{stage}}"],
+          "path": ["user", "86", "image"]
+        },
+        "description": "This endpoint is for API delete user image\n\n**HEADER PARAMETER**\n\ncompany_id: required, integer\n\n**URL-PARAMETER**\n\nurl: user/{user}/image\n\nuser: required, integer, id for user\n\n1. **PARAMETERS:**\n    \n\n---\n\n**2\\. RESPONSE:**\n\n{\"status\":true,\"message\":\"Successfully deleted.\"}\n\nIn valid ID:-\n\n{\"status\":false,\"message\":\"Invalid id.\"}\n\n---\n\n**3\\. VALIDATIONS:**\n\nBlank submission\n\n---\n\n**4\\. FAILURE:**\n\n{\"status\":false,\"message\":\"Company ID is required\"}\n\n{\"status\":false,\"message\":\"Unauthorized Company\"}\n\n---\n\n**5\\. OTHER EXCEPTION:**\n\n{  \n\"status\": false,  \n\"message\": \"Something went wrong.\"  \n}"
+      },
+      "response": []
+    },
+    {
+      "name": "dropdown roles",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "company_id",
+            "value": "{{company_id}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "id",
+              "value": "",
+              "description": "// for edit pass category_type id",
+              "type": "text"
+            },
+            {
+              "key": "type",
+              "value": "0",
+              "description": "// type=0 ->All records\n// type=1 ->All active records\n// type=2 ->All active records with some records with given id (for edit page when the item  is deleted)\n",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{local}}/role/dropdown",
+          "host": ["{{local}}"],
+          "path": ["role", "dropdown"]
+        },
+        "description": "This endpoint is for API dropdown roles\n\n**HEADER PARAMETER**\n\ncompany_id: required, integer\n\n1. PARAMETERS:  \n    type : // type=0 ->All records, // type=1 ->All active records, // type=2 ->All active records with some records with given id (for edit page when the item is deleted)  \n    id: for edit pass role id\n    \n2. RESPONSE:  \n    {\"status\":true,\"data\":{\"owner\":2,\"admin\":3,\"other_roles\":\\[{\"title\":\"Customer\",\"id\":7},{\"title\":\"Designer\",\"id\":6},{\"title\":\"Normal User\",\"id\":5},{\"title\":\"Project Manager\",\"id\":4},{\"title\":\"Vendor\",\"id\":8}\\]}}\n    \n3. VALIDATIONS:  \n    Blank submission\n    \n\n{  \n\"status\": false,  \n\"message\": \"Company ID is required\"  \n}\n\n{  \n\"status\": false,  \n\"message\": \"Unauthorized Company\"  \n}\n\n1. OTHER EXCEPTION:  \n    {  \n    \"status\": false,  \n    \"message\": \"Something went wrong.\"  \n    }"
+      },
+      "response": []
+    },
+    {
+      "name": "check mail exist",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "company_id",
+            "value": "{{company_id}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "email",
+              "value": "ishtechdeveloper8@gmail.com",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{local}}/user/check-mail-exist",
+          "host": ["{{local}}"],
+          "path": ["user", "check-mail-exist"]
+        },
+        "description": "This endpoint is for API check mail exist\n\nCHeck the mail id exist in the software\n\n**HEADER PARAMETER**\n\ncompany_id: required, integer\n\n1. **PARAMETERS:**\n    \n\nbody:  \nemail: required, email\n\n---\n\n**2\\. RESPONSE:**\n\n{\"status\":true,\"exists\":true,\"can_override\":false}\n\n---\n\n**3\\. VALIDATIONS:**\n\nBlank submission\n\nother\n\n---\n\n**4\\. FAILURE:**\n\n---\n\n**5\\. OTHER EXCEPTION:**\n\n{  \n\"status\": false,  \n\"message\": \"Something went wrong.\"  \n}\n\n**Addtional info:-**\n\n- **`exists: true/false`** – Indicates whether the user already exists.\n    \n- **`can_override: true/false`** – Determines if the user can override details."
+      },
+      "response": []
+    },
+    {
+      "name": "list user",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMWUxODM4NTNlYjc3NmYyZWQ5NzAxZWY0MWI3ZTYwYWYxMzhkNmJhYjI1MTFmOTkxYThlMTI0ZmNiMzYwZmJkMTU1YjZjZDIwNWNmNmY2Y2QiLCJpYXQiOjE3NDcwMDgxNDMuNTg4NTEyLCJuYmYiOjE3NDcwMDgxNDMuNTg4NTE0LCJleHAiOjE3NDcxODA5NDMuNTgwMDE1LCJzdWIiOiIxOSIsInNjb3BlcyI6W119.mzxgj0ckdXVmq2msByLuKiGFAsDWGKfDHRfaKuSsV5xjQmZY_fz0g3pjZaF5mVrb0-qMpPg7th9gglP9VUOCqGR2S2KyjviNzI-lMEzBx-MrHLxZBTCruJgP43liW2pgmG3zWilsQjAwhaWh83WNo--p6Ea5k5T4xdDsHyMdBSlop1rExymJpb9Zh5A9i3zsEsLbmWT1bQKb92LxHjZ8jR9C0WIAKPIdTCgwbMo6OS2UTnKHZw1tC1aJrbAE0SNJVENp4oxfhi9jMSM6OSLSOC_UhuRJQkMJy070Lq98WwQj1390VrYxLgEUmM7sytDqTdNAndPUZ5X9sl1jRlIQNwxqTZ9rs1soHzi4aGV67tfzQoEDEf_wTJV81XBEDm3ZZQADkkw-3vbw_DmOT_fRSlQyUXNIvvroHLvdDEVxYNW3cILbc1UCwHVFMi3Ji608qUXyNYw6VrFQSx4JJs-hsRXu041VEf9-zcXWUchZ9upallhzGaYLbiwu7t9sJpmvoiwwg6TRYB41PFBbTS8T8nYyp8QnmdhomTvzlRUM3KnI_vd6HA7cbXGP5hbrbwwyjQfYiRAeQEv4tYRZr_yKi_mNEV86Rms-p0O8az-HKDNSjSJnsimlNhahPokylHaaPLgnwFPY6K0atiWEwQu73Ps3diev3avUgOJx4sqh6YE",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "company_id",
+            "value": "4",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/user?status=1",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8000",
+          "path": ["api", "user"],
+          "query": [
+            {
+              "key": "status",
+              "value": "1",
+              "description": "null - for all results\n1- active\n0-inactive"
+            }
+          ]
+        },
+        "description": "This endpoint is for API list product\n\nurl: api/product?status=1\n\nstatus: optional, int, in:0,1  \nnull - for all results1- active0-inactive\n\n**HEADER PARAMETER**\n\ncompany_id: required, integer\n\n1. **PARAMETERS:**\n    \n\n---\n\n**2\\. RESPONSE:**\n\n{\"status\":true,\"data\":\\[{\"id\":7,\"first_name\":\"Admin\",\"last_name\":\"2\",\"title\":null,\"initials\":null,\"role_type\":3,\"email\":\"[admin2@gmail.com](https://mailto:admin2@gmail.com)\",\"email_verified_at\":null,\"phone\":null,\"profile_image\":null,\"status\":true,\"created_at\":\"2025-02-20T13:08:50.000000Z\",\"profile_image_url\":\"[http://127.0.0.1:8070/assets/profile/default.png\",\"role\":{\"id\":3,\"title\":\"Admin\",\"laravel_through_key\":7}},{\"id\":21,\"first_name\":\"Appu](http://127.0.0.1:8070/assets/profile/default.png) s\",\"last_name\":null,\"title\":\"CS Engineer\",\"initials\":\"RC\",\"role_type\":5,\"email\":\"[appu@gmail.com](https://mailto:appu@gmail.com)\",\"email_verified_at\":null,\"phone\":\"9748555774\",\"profile_image\":null,\"status\":true,\"created_at\":\"2025-03-10T08:53:42.000000Z\",\"profile_image_url\":\"[http://127.0.0.1:8070/assets/profile/default.png\",\"role\":{\"id\":10,\"title\":\"Normal](http://127.0.0.1:8070/assets/profile/default.png) User\",\"laravel_through_key\":21}},{\"id\":6,\"first_name\":\"Owner\",\"last_name\":\"2\",\"title\":null,\"initials\":null,\"role_type\":2,\"email\":\"[owner2@gmail.com](https://mailto:owner2@gmail.com)\",\"email_verified_at\":null,\"phone\":null,\"profile_image\":null,\"status\":true,\"created_at\":\"2025-02-20T13:08:50.000000Z\",\"profile_image_url\":\"[http://127.0.0.1:8070/assets/profile/default.png\",\"role\":{\"id\":2,\"title\":\"Owner\",\"laravel_through_key\":6}},{\"id\":22,\"first_name\":\"Raghavan](http://127.0.0.1:8070/assets/profile/default.png) 5\",\"last_name\":null,\"title\":\"Mechanical Engineer\",\"initials\":\"RC\",\"role_type\":5,\"email\":\"[raghavan1@gmail.com](https://mailto:raghavan1@gmail.com)\",\"email_verified_at\":null,\"phone\":\"9748555774\",\"profile_image\":\"user_profile/xu469ag2Taode51giCTSCLkyVjYbNT2Qj5FWKaTp.jpg\",\"status\":true,\"created_at\":\"2025-03-11T04:32:32.000000Z\",\"profile_image_url\":\"[http://127.0.0.1:8070/storage/user_profile/xu469ag2Taode51giCTSCLkyVjYbNT2Qj5FWKaTp.jpg\",\"role\":{\"id\":10,\"title\":\"Normal](http://127.0.0.1:8070/storage/user_profile/xu469ag2Taode51giCTSCLkyVjYbNT2Qj5FWKaTp.jpg) User\",\"laravel_through_key\":22}},{\"id\":8,\"first_name\":\"Sales Rep\",\"last_name\":\"2_1\",\"title\":null,\"initials\":null,\"role_type\":5,\"email\":\"[sales2_1@gmail.com](https://mailto:sales2_1@gmail.com)\",\"email_verified_at\":null,\"phone\":null,\"profile_image\":null,\"status\":true,\"created_at\":\"2025-02-20T13:08:50.000000Z\",\"profile_image_url\":\"[http://127.0.0.1:8070/assets/profile/default.png\",\"role\":{\"id\":10,\"title\":\"Normal](http://127.0.0.1:8070/assets/profile/default.png) User\",\"laravel_through_key\":8}},{\"id\":9,\"first_name\":\"Sales Rep\",\"last_name\":\"2_2\",\"title\":null,\"initials\":null,\"role_type\":5,\"email\":\"[sales2_2@gmail.com](https://mailto:sales2_2@gmail.com)\",\"email_verified_at\":null,\"phone\":null,\"profile_image\":null,\"status\":true,\"created_at\":\"2025-02-20T13:08:51.000000Z\",\"profile_image_url\":\"[http://127.0.0.1:8070/assets/profile/default.png\",\"role\":{\"id\":10,\"title\":\"Normal](http://127.0.0.1:8070/assets/profile/default.png) User\",\"laravel_through_key\":9}}\\]}\n\n---\n\n**3\\. VALIDATIONS:**\n\nBlank submission\n\n---\n\n**4\\. FAILURE:**\n\n{\"status\":false,\"message\":\"Invalid id.\"}\n\n---\n\n**5\\. OTHER EXCEPTION:**\n\n{  \n\"status\": false,  \n\"message\": \"Something went wrong.\"  \n}\n\n//Additional info:-\n\nThe api lists admin and user roles\n\nIf need to restrict delete or edit the admin user in the list , we can use the role->default=1 value, default =1 means ,the role is defualt role creted when company created"
+      },
+      "response": []
+    },
+    {
+      "name": "add user",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNGFiYjcxOWY5MTQ1NDhiOWI3ZGFlMTc5MGVhNGNkMjAwNWM4YTc0NDIzODg3MDU4MDlhN2E2MTY2MDJiYTdlZmNjMjRmZDk4ZTgzZGVkNjIiLCJpYXQiOjE3NDU4MDQ5NjAuNDg5NzI0LCJuYmYiOjE3NDU4MDQ5NjAuNDg5NzI1LCJleHAiOjE3NDU5Nzc3NjAuNDg0MjYzLCJzdWIiOiIxOSIsInNjb3BlcyI6W119.FC5G8QbpoYQ-NiN4v_RlH34YMU3CUw6j_LH6pxtwlUGQRhU7NflcSWVKPC0CYrsbOEU2hHYkg46WL62LtdRRKLW0tdsfga1W9PRcvfW-EO4QG2vEQQ49u7W-IKKZhrgo4P7bFJc3nvlDQ9UK8u-AwrZoAtkhtfLiigeocIoY_qWiPf28Fk7yRM-JTIFfRfR85FFCNHtBuaRfA1pimsArTHyCRghJzEdjZTZR4-FLWEyoV29-SUp-4M1hFmiW133kkqw2hvqSM8EdSp1jWcb78OLlO35JsbmsI8bYB-x-m-jNPZdW3Iv8JBSVNsffLNxJAGtzfmVAXohWjwuiZ-q2AtG1mH3N7nvqG4PTGN68uHwPWL8H1WeeINnbSmozZddruVgI8tzLwCn0I2B3851T0mpBJi4xDPeUCvw5lgBFDBLMHu9efvSt7YwdVN_40EdyUTYBfBrgNZo4l9D0e2bvpa2ECW6K56s0Zir1F9-x-gV_DHEkbPVga9bcFuhQ1Lo1Cvw7zXV31YzFP2AT8vzcKEo0cfDhy27Y3N4BDB5X7V4CtHoWt9IanE9L1SRd5JIlpuvF-ASnxgoeJogvwHCof5Dt9IZgu7YnUOVJ76rH9l8tqcX5ozxoAgYJfkAXz6-E227HZJNZvy6Dx7rDVlAT_Ub1l-PN04tlptbVjlCA7m0",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "company_id",
+            "value": "4",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "role",
+              "value": "8",
+              "type": "text"
+            },
+            {
+              "key": "user_picture",
+              "type": "file",
+              "src": "/home/g3interactive/Pictures/ac0c73d748ae70d2493de6fac113d98c.jpg"
+            },
+            {
+              "key": "name",
+              "value": "TATA-Admin-2",
+              "type": "text"
+            },
+            {
+              "key": "email",
+              "value": "irfan.g3interactive@gmail.com",
+              "type": "text"
+            },
+            {
+              "key": "title",
+              "value": "CS Engineer",
+              "type": "text"
+            },
+            {
+              "key": "initials",
+              "value": "RC",
+              "type": "text"
+            },
+            {
+              "key": "phone",
+              "value": "9748555774",
+              "type": "text"
+            },
+            {
+              "key": "overwite_data",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "responsibilities",
+              "value": "",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/user",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8000",
+          "path": ["api", "user"]
+        },
+        "description": "This endpoint is for API add user\n\n**HEADER PARAMETER**\n\ncompany_id: required, integer\n\n1. **PARAMETERS:**\n    \n\nbody:  \nrole: required, integer  \nuser_picture: optional, file  \nname: required, string  \nemail: required, email  \ntitle: optional, string  \ninitials: optional, string  \nphone: optional, string  \noverwite_data: required, in:0,1\n\nresponsibilities:optional, array format \\[1,2\\]\n\n---\n\n**2\\. RESPONSE:**\n\n{  \n\"status\": true,  \n\"message\": \"Details saved successfully.\"  \n}\n\n---\n\n**3\\. VALIDATIONS:**\n\nBlank submission\n\n{\"message\":\"The name field is required. (and 2 more errors)\",\"errors\":{\"name\":\\[\"The name field is required.\"\\],\"email\":\\[\"The email field is required.\"\\],\"role\":\\[\"The role field is required.\"\\]}}\n\nother\n\n---\n\n**4\\. FAILURE:**\n\n---\n\n**5\\. OTHER EXCEPTION:**\n\n{  \n\"status\": false,  \n\"message\": \"Something went wrong.\"  \n}"
+      },
+      "response": []
+    },
+    {
+      "name": "show user",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZDZlMjM3N2RjZWIwMGRiNWM1NTBiMWIzNjhhZDM1YWVmMzQ5N2E3N2IzOGM2ZjU5ZGY4Njk2NmZmYmM0MWYxYjhjNDA0MmE0MzViMzg4NDgiLCJpYXQiOjE3NDc4OTI1MTYuMTU0NDE3LCJuYmYiOjE3NDc4OTI1MTYuMTU0NDE4LCJleHAiOjE3NDgwNjUzMTYuMTQ1ODA4LCJzdWIiOiIxOSIsInNjb3BlcyI6W119.oPmNlTMgQ4239PF944Gc4Qnst5cq65ZYBppdFlZGT369ZI01-Dpo9ls780ZEyOZH9JShhPpFTSSrq-TaGYBrgcEfMNj38n80_ceosa6tVCexPBuBW3SUOKG46dtOtDbJImt6U-5eFhoryPS6U7n-VjekxbEf3451VkJIrKjBHiOYD7VbmuBA6xDC2rhhZqM2oukcbbr-ARRm4WgveohnwN1XpcYVZPq0fxz6t9zqBoDM8LquugewyJIzaMWidfvmb-HDJhdZjlGtXxnoJLxewx0DT7-lxWcB81NIA1Dt6B70wbaK48m-bsP5z_XnqYluzdeLyk3AcTlY9noEvdt36PrBWb_tXDJExufEhQkuFREfG1Vj97amsLkWTK6_qw3rjCHLZBHaaQNzJHXrgpQJ49ciJvCVHr3M2PdARe259yXrC-nMiiInFf2HEJprLaP3Sj_8LI0Q3cwqZdsQYvZnRQUqGDe4J2t8-OBhEEJ2VDPNPBcA2OkGj-zSHgXYwAZbLkhOXX6xM6FDLmaeab47Uu7m5P0zDKa8bsVBtK7IpRA4Il2kpdhvWFeaH_6YO301rQvpfh_YprlYQyDq2VMmh-jkzZ_cKLpcJGDJuO411CC4LA7chqHT7TKXv4XonWSI-2sQ_ssCuhG0AbmXMupAg-dNKeI71QmND_g0el4eDF8",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "company_id",
+            "value": "4",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": []
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/user/42",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8000",
+          "path": ["api", "user", "42"]
+        },
+        "description": "This endpoint is for API show user\n\n**HEADER PARAMETER**\n\ncompany_id: required, integer\n\n1. **PARAMETERS:**\n    \n\n---\n\n**2\\. RESPONSE:**\n\n{\"status\":true,\"data\":{\"id\":21,\"first_name\":\"Appu pp\",\"last_name\":null,\"title\":\"CS Engineer\",\"initials\":\"RC\",\"role_type\":5,\"email\":\"[appu@gmail.com](https://mailto:appu@gmail.com)\",\"email_verified_at\":null,\"phone\":\"9748555774\",\"profile_image\":\"user_profile/Gy2r9CTrMlPYDLldYJ0lOPft93yilUCSyVCVU9fX.jpg\",\"status\":true,\"created_at\":\"2025-03-10T08:53:42.000000Z\",\"profile_image_url\":\"http://127.0.0.1:8070/storage/user_profile/Gy2r9CTrMlPYDLldYJ0lOPft93yilUCSyVCVU9fX.jpg\",\"role\":{\"id\":10,\"title\":\"Normal User\",\"slug\":\"normal_user\",\"laravel_through_key\":21}}}\n\n---\n\n**3\\. VALIDATIONS:**\n\nBlank submission\n\nother\n\n---\n\n**4\\. FAILURE:**\n\n---\n\n**5\\. OTHER EXCEPTION:**\n\n{  \n\"status\": false,  \n\"message\": \"Something went wrong.\"  \n}"
+      },
+      "response": []
+    },
+    {
+      "name": "update user",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiOGRiYzc2NjU3NWExMTE3YzJiZTQwZmM3NDYwZTAyYWRlMTM4ODRkYWQ0ZWFjOWVlOGY2ZjU2YmI1ZjgzMThmMzc4YjRlZmNhMWUwNWI1ZGUiLCJpYXQiOjE3NDU4ODI4OTIuOTAxNDM4LCJuYmYiOjE3NDU4ODI4OTIuOTAxNDM5LCJleHAiOjE3NDYwNTU2OTIuODk2NDU0LCJzdWIiOiIxOSIsInNjb3BlcyI6W119.s-qZZFgo8qbK2KWMbr0g7EGozNmmAtSAeZJwieYDyKoZ-KjPvE5kLIzA6qOQhH3Llvgu_wFPER3VSkwd9Xfc5cojX1Wk_lQ3Nlf0r97w0paPEcd2xpy8Bk-5z1O2vz6KjJCQL2mPe5SBpoxCzWI4-Jat9_RDfKIBPBoizD8FduKYY89t-3bUSbljkvJZ8IYnRneuaWI9g-dm1EyCjnU1a89yX5zoU39L3OhidrN0vSewlXIrJyUjsgL_fGQwjn-3q1DmYSlZOXoiQMgg-SigGllFV_vxQnoJuvx-eXM2lll6Q2_AI2z-P39ggCCu3XniLd1vNP_YVJsqSWEQs3LntwNMvu_LGHd5zn5nzdXIwEsJnIc7_EJ27gBtmrmpekTKeY_rKWR-05ZCu0eRo_G2br6EPRgv9sJXGaUl1pqrjuSGmzNuQN3bs0RRM6PVWxYNKJcTxnPVxKLaqK72_q4fkOVjqALAJn9O8QBPvYiDOvv93P3DYGNVcs4IC3tj-k7-YE6TUzizlqF8CWbDRvgC2ndwZVUmpihnYrOL6IxQl2nUELkIdTA30YrxCpVemqv4QRTfwL5mDo2sl-9_3AG0EbCeZMU7tVc66VcJriT4YF8LwfqdpKwLERD4IXPQpyiTr2bCu2xY_q_5hdJz1w_7r-V2OTIqncCd58u0uTpfp3o",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "multipart/form-data",
+            "type": "text"
+          },
+          {
+            "key": "company_id",
+            "value": "{{company_id}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "role",
+              "value": "24",
+              "type": "text"
+            },
+            {
+              "key": "user_picture",
+              "type": "file",
+              "src": "/home/g3interactive/Pictures/Screenshots/Screenshot from 2025-04-23 19-50-25.png"
+            },
+            {
+              "key": "name",
+              "value": "adhil",
+              "type": "text"
+            },
+            {
+              "key": "email",
+              "value": "adhil@gmail.com",
+              "type": "text"
+            },
+            {
+              "key": "title",
+              "value": "Mechanical Engineer",
+              "type": "text"
+            },
+            {
+              "key": "initials",
+              "value": "RC",
+              "type": "text"
+            },
+            {
+              "key": "phone",
+              "value": "9748555774",
+              "type": "text"
+            },
+            {
+              "key": "_method",
+              "value": "put",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{host}}/user/22",
+          "host": ["{{host}}"],
+          "path": ["user", "22"]
+        },
+        "description": "This endpoint is for API update user\n\n**HEADER PARAMETER**\n\ncompany_id: required, integer\n\n1. **PARAMETERS:**\n    \n\nbody:  \nrole: required, integer  \nuser_picture: optional, file  \nname: required, string  \nemail: required, email  \ntitle: optional, string  \ninitials: optional, string  \nphone: optional, string\n\n---\n\n**2\\. RESPONSE:**\n\n{  \n\"status\": true,  \n\"message\": \"Details updated successfully.\"  \n}\n\n---\n\n**3\\. VALIDATIONS:**\n\nBlank submission\n\n{\"message\":\"The name field is required. (and 2 more errors)\",\"errors\":{\"name\":\\[\"The name field is required.\"\\],\"email\":\\[\"The email field is required.\"\\],\"role\":\\[\"The role field is required.\"\\]}}\n\nother\n\n---\n\n**4\\. FAILURE:**\n\n---\n\n**5\\. OTHER EXCEPTION:**\n\n{  \n\"status\": false,  \n\"message\": \"Something went wrong.\"  \n}"
+      },
+      "response": []
+    },
+    {
+      "name": "change-status",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZmRjYWZiOGMxZDk4NWZlNDQ1MGU5OWRiNDMwYTNjZmE3ZmI3ZmEwZjFiNGE4YmRmODI0MWZjZDE1NmMxOWIxN2ZlM2JkN2NjZWE3M2YxMTAiLCJpYXQiOjE3NDU4OTkxMzQuMzk0OTEyLCJuYmYiOjE3NDU4OTkxMzQuMzk0OTE2LCJleHAiOjE3NDYwNzE5MzQuMzc5MjA0LCJzdWIiOiIxOSIsInNjb3BlcyI6W119.oxDnco6rf0H4aAwvhK01XyZCkSRMODuQbsuXMm6VEijdppWbK02qfG58rrWbBP2zvFRjFKixWWqG0b5B6OD93Agk_U7CMy5GzaEibj2DBmTuJWgT5CNMKpfz1ZVZ7TAiUQgRdKszrEIeGNKwlwYHlfUddto6h9p0PTfPz2wN89ym3P-tp4lCT7Fz6vLmCH_OgCApF6uBrwypG-xdDP-QXwl34eKgBnR8i9Ti2kdwHwdFVEvetc8VbxQDfpq2pbk1LPOcvT-r1fyO5n_DJlab6JRhypt6_1RIxynJdAkBZ67k_x9xVQie4tNV89fEelU4NZCZ7U5va9hL5bkoVenOywhEVJPzkCjCo-1iqzQNl9r1vS8ET79AhobTfAynZlfB1gZbWAGBtQQ-a91LuIBZeeBuL_AYDlM2tlJmbP7RYs4vUpQLtk1HlASUFGJfs1olnkNbGoL8UZvrpY6UbC_Yj_HMr6rBGKmk5x2Y24acKi09aNerFsNaMgR1RPS9MWiR3F5LE1xRpgH7XIfMSJZ_qXUzmSBdAP46YunctgzcjZniRcukEUjpu5h-oYJfF3g0hcrUFRlk8yMg2CDXxVcZocwza7J0xzsjkpwW7600vQfKW4QG0JB3GAILdqLTr4Mii7u3WhMvGyxAo1d143VfWwGhQkHyA9GU_drWU6hxe3k",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "company_id",
+            "value": "4",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "status",
+              "value": "0",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/api/user/33/status",
+          "protocol": "http",
+          "host": ["127", "0", "0", "1"],
+          "port": "8000",
+          "path": ["api", "user", "33", "status"]
+        },
+        "description": "This endpoint is for API update user\n\n**HEADER PARAMETER**\n\ncompany_id: required, integer\n\nurl: api/user/{id}/status\n\nid: required, integer, id for user\n\n1. **PARAMETERS:**\n    \n\nbody:\n\n---\n\n**2\\. RESPONSE:**\n\n{  \n\"status\": true,  \n\"message\": \"Status changed successfully\"  \n}\n\n---\n\n**3\\. VALIDATIONS:**\n\nother\n\n---\n\n**4\\. FAILURE:**\n\n{\"status\":false,\"message\":\"Sorry... User not exists!\"}\n\n{\"status\":false,\"message\":\"Invalid id.\"}\n\n---\n\n---\n\n**5\\. OTHER EXCEPTION:**\n\n{  \n\"status\": false,  \n\"message\": \"Something went wrong.\"  \n}"
+      },
+      "response": []
+    },
+    {
+      "name": "delete user",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "multipart/form-data",
+            "type": "text"
+          },
+          {
+            "key": "company_id",
+            "value": "{{company_id}}",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "role",
+              "value": "10",
+              "type": "text"
+            },
+            {
+              "key": "user_picture",
+              "type": "file",
+              "src": "/home/g3interactive/Pictures/1616400917_Asphalt 9.jpg"
+            },
+            {
+              "key": "name",
+              "value": "Raghavan 5",
+              "type": "text"
+            },
+            {
+              "key": "email",
+              "value": "appu@gmail.com",
+              "type": "text"
+            },
+            {
+              "key": "title",
+              "value": "Mechanical Engineer",
+              "type": "text"
+            },
+            {
+              "key": "initials",
+              "value": "RC",
+              "type": "text"
+            },
+            {
+              "key": "phone",
+              "value": "9748555774",
+              "type": "text"
+            },
+            {
+              "key": "_method",
+              "value": "put",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{host}}/user/21",
+          "host": ["{{host}}"],
+          "path": ["user", "21"]
+        },
+        "description": "This endpoint is for API delete user\n\n**HEADER PARAMETER**\n\ncompany_id: required, integer\n\n1. **PARAMETERS:**\n    \n\n---\n\n**2\\. RESPONSE:**\n\n{  \n\"status\": true,  \n\"message\": \"Successfully deleted.\"  \n}\n\n---\n\n**3\\. VALIDATIONS:**\n\nBlank submission\n\nother\n\n---\n\n**4\\. FAILURE:**\n\n{\"status\":false,\"message\":\"Sorry... User not exists!\"}\n\n{\"status\":false,\"message\":\"Invalid id.\"}\n\n---\n\n**5\\. OTHER EXCEPTION:**\n\n{  \n\"status\": false,  \n\"message\": \"Something went wrong.\"  \n}"
+      },
+      "response": []
+    },
+    {
+      "name": "get responsibilites",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "// Store the dropdown responsibility id in an environment or global variable\r",
+              "var dropdownResponsibilityId = responseBody[0].id;\r",
+              "pm.globals.set(\"dropdownResponsibilityId\", dropdownResponsibilityId);\r",
+              "\r",
+              "pm.test(\"Response status code is 200\", function () {\r",
+              "    pm.response.to.have.status(200);\r",
+              "});\r",
+              "\r",
+              "\r",
+              "pm.test(\"Response time is less than 200ms\", function () {\r",
+              "  pm.expect(pm.response.responseTime).to.be.below(200);\r",
+              "});\r",
+              "\r",
+              "\r",
+              "pm.test(\"Presence of 'title' and 'id' fields in the response schema\", function () {\r",
+              "    const responseData = pm.response.json();\r",
+              "    \r",
+              "    pm.expect(responseData).to.be.an('array');\r",
+              "    responseData.forEach(function(item) {\r",
+              "        pm.expect(item).to.have.property('title');\r",
+              "        pm.expect(item).to.have.property('id');\r",
+              "    });\r",
+              "});\r",
+              "\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          },
+          {
+            "key": "company_id",
+            "value": "{{company_id}}",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "{{local}}/user/dropdown-responsibility",
+          "host": ["{{local}}"],
+          "path": ["user", "dropdown-responsibility"]
+        },
+        "description": "This endpoint makes an HTTP GET request to retrieve a dropdown list of user responsibilities.\n\n**HEADER PARAMETER**\n\ncompany_id: required, integer\n\n1. PARAMETERS:\n    \n2. RESPONSE:  \n    \\[{\"title\":\"Designer\",\"id\":36},{\"title\":\"Project Manager\",\"id\":35},{\"title\":\"Production Manager\",\"id\":34},{\"title\":\"Sales Rep\",\"id\":33}\\]\n    \n3. VALIDATIONS:  \n    Blank submission\n    \n\n{  \n\"status\": false,  \n\"message\": \"Company ID is required\"  \n}\n\n{  \n\"status\": false,  \n\"message\": \"Unauthorized Company\"  \n}\n\n1. OTHER EXCEPTION:  \n    {  \n    \"status\": false,  \n    \"message\": \"Something went wrong.\"  \n    }"
+      },
+      "response": []
+    }
+  ]
+}

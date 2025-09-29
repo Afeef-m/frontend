@@ -1,0 +1,95 @@
+{
+  "info": {
+    "_postman_id": "c81724cc-182f-41fd-b25c-0517f51cf1fc",
+    "name": "Auth Copy",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "41775050",
+    "_collection_link": "https://ish-team.postman.co/workspace/SignSite-crm~cb9f8a9a-11e4-4ba0-b167-e5bf4f8a1ccc/collection/41775050-c81724cc-182f-41fd-b25c-0517f51cf1fc?action=share&source=collection_link&creator=41775050"
+  },
+  "item": [
+    {
+      "name": "login",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "email",
+              "value": "ishtechdeveloper10@gmail.com",
+              "type": "text"
+            },
+            {
+              "key": "password",
+              "value": "admin@fmw2023",
+              "type": "text"
+            },
+            {
+              "key": "ip_address",
+              "value": "220.233.36.40",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://127.0.0.1:8000/api/login",
+          "protocol": "https",
+          "host": ["127", "0", "0", "1"],
+          "port": "8000",
+          "path": ["api", "login"]
+        },
+        "description": "This endpoint is for API login\n\n1. **PARAMETERS:**\n    \n\nemail : required , email\n\npassword : required, string\n\nip_address: optional, string\n\n---\n\n**2\\. RESPONSE:**\n\notp:  \n{  \n\"user_id\": 2,  \n\"email\": \"[adil.g3interactive@gmail.com](https://mailto:adil.g3interactive@gmail.com)\",  \n\"isExpired\": 1,  \n\"message\": \"An otp has been sent to your registered email address\"  \n}\n\n---\n\n\\*companies key is not if super_admin  \n{  \n\"id\": 2,  \n\"role_id\": 2,  \n\"role\": \"Owner\",  \n\"role_type\": 2,  \n\"first_name\": \"Owner1\",  \n\"last_name\": null,  \n\"email\": \"[adil.g3interactive@gmail.com](https://mailto:adil.g3interactive@gmail.com)\",  \n\"profile_image_url\": \"[http://127.0.0.1:8070/storage/defaultimg.png\"](http://127.0.0.1:8070/storage/defaultimg.png),  \n\"companies\": {  \n\"id\": 1,  \n\"company_name\": \"G3 interactive\"  \n},  \n\"access_token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWQ4ZDM5YjQ1OTQzZWVhMGM2NWMxM2QzZGQ0NGZlNjQ3NmMzNDY1YmQ2ZGIzMmJlYmU2ZjE3ZDY2ODFhMmJmNDdjYzM0OTNhNTMwZTg1OTAiLCJpYXQiOjE3Mzg2NjA1NzMuMTQ0MTg3LCJuYmYiOjE3Mzg2NjA1NzMuMTQ0MTg5LCJleHAiOjE3Mzg2OTI5NzMuMTM1MjY2LCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.BkXS5eIfWmslcaKBT1REZtqYTJyHF6LeFxfOtp_LfP2WzjxdshiZsZBTW2HVswrHGwymsugjnTKpiG99BxKTAesUyVZmqWBQxzpspxR7kz7F4MMp2NZ3u2TZy52IgEj3UrMEodpqCeNRTC2SrVbonZqELVNPaDmhruOA1QrA_vrMPYTOHC_g-VApPNNhxxVV2NwWSiNvno_IfNfj717-766WctqYG5-GRnDj1pMNT0oUvdVJfXS3QtrD_FKOpsgYjit28GES58hUf28LVnNpSLS3GkxR3gKieDOBcKMoSA2Gfx2MAxbZJD1KSZpJvJWz4pRucLaual0TPq5o3biNCI3lCG1YFXfV_jUJR-bQhbhQSznFMXgF31Civ_-xEmjJU9unu1x8euBr3MdUZGaajD032p_Rep4vCCwFf1tn4Am1Lw2kBb16AfjCMo78S2b6dxNj-TirPdhr8bQhFpGWrliCdc3Domsolox7gmdUwUAMVCh0W02xjFew9tWCG06LZfQ-bWsLtzKOGNHdfmkBouUpp6gCwN8aTS8ybEtoY5pn3iFvbZdBUDNCVhApGM4N5ESqMrRFoyS0_36xVnDimRuZmlLEa4QdvmXnNeIjA81gYNpYgoBdXKVgpK7zJ1EBDNHNJ5M0-MGwlyVq8FnNeYo_EZExqAOoUjIFSwpNkmg\",  \n\"refresh_token\": \"ed8d39b45943eea0c65c13d3dd44fe6476c3465bd6db32bebe6f17d6681a2bf47cc3493a530e8590\",  \n\"expires_at\": \"2025-02-04T18:16:13.000000Z\",  \n\"expires_in_sec\": 32399.849659000003  \n}\n\n//condition 1:- logged user have multiple companies\n\nResponse will have companies array, take the company details to redirect to the company choose page. - no saperate api given for user's company list\n\n//condition 2:- logged user have single company\n\nRespinse will have single company object, use the details to save company_id on header .\n\n//condition:- If super admin loggin\n\nsaperate api given for list registered companies,named company/list\n\n---\n\n**3\\. VALIDATIONS:**\n\nBlank submission\n\n{  \n\"message\": \"This field is required. (and 1 more error)\",  \n\"errors\": {  \n\"email\": \\[  \n\"This field is required.\"  \n\\],  \n\"password\": \\[  \n\"This field is required.\"  \n\\]  \n}  \n}\n\n---\n\n**4\\. FAILURE:**\n\n{  \n\"message\": \"The login credentials are incorrect.\"  \n}\n\n---\n\n**5\\. OTHER EXCEPTION:**\n\n{  \n\"message\": \"Something went wrong.\"  \n}"
+      },
+      "response": []
+    },
+    {
+      "name": "logout",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "{{token}}",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{local}}/logout",
+          "host": ["{{local}}"],
+          "path": ["logout"]
+        },
+        "description": "This endpoint is for API logout\n\n1. **PARAMETERS:**\n    \n\n---\n\n**2\\. RESPONSE:**\n\n{  \n\"status\": true,  \n\"message\": \"User successfully signed out.\"  \n}\n\n---\n\n**3\\. VALIDATIONS:**\n\n---\n\n**4\\. FAILURE:**\n\n{  \n\"message\": \"Unauthenticated.\"  \n}\n\n---\n\n**5\\. OTHER EXCEPTION:**\n\n{  \n\"status\": false,  \n\"message\": \"Something went wrong.\"  \n}"
+      },
+      "response": []
+    }
+  ]
+}
