@@ -75,7 +75,7 @@ const Login = () => {
     setError('');
 
     try {
-      const response = await fetch('https://127.0.0.1:8000/api/login', {
+      const response = await fetch('http://13.210.33.250/login', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -88,7 +88,6 @@ const Login = () => {
       if (response.ok) {
         handleLoginSuccess(data);
       } else {
-        // Handle API errors
         handleLoginError(data);
       }
     } catch (error) {

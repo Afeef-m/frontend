@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './userList.css';
 
-const UserList = () => {
+function UserList(){
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -14,7 +14,6 @@ const UserList = () => {
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
-  // Fetch users on component mount
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -29,7 +28,7 @@ const UserList = () => {
         return;
       }
 
-      let url = 'http://127.0.0.1:8000/api/user';
+      let url = 'http://13.210.33.250/login/userList';
       if (status !== '') {
         url += `?status=${status}`;
       }
@@ -50,7 +49,7 @@ const UserList = () => {
         }
       } else if (response.status === 401) {
         localStorage.clear();
-        navigate('/login');
+        navigate('/');
       }
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -60,7 +59,6 @@ const UserList = () => {
     }
   };
 
-  // Filter users based on search and status
   const filteredUsers = users.filter(user => {
     const matchesSearch = 
       user.first_name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -74,7 +72,6 @@ const UserList = () => {
     return matchesSearch && matchesStatus;
   });
 
-  // Pagination
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
   const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
@@ -95,7 +92,7 @@ const UserList = () => {
       const token = localStorage.getItem('token');
       const companyId = localStorage.getItem('company_id');
 
-      const response = await fetch(`http://127.0.0.1:8000/api/user/${userId}/status`, {
+      const response = await fetch(`http://13.210.33.250/login/user/${userId}/status`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -139,7 +136,7 @@ const UserList = () => {
       const token = localStorage.getItem('token');
       const companyId = localStorage.getItem('company_id');
 
-      const response = await fetch(`http://127.0.0.1:8000/api/user/${userToDelete.id}`, {
+      const response = await fetch(`http://13.210.33.250/login/user/${userToDelete.id}`, {
         method: 'DELETE',
         headers: {
           'Accept': 'application/json',
@@ -152,7 +149,6 @@ const UserList = () => {
         const data = await response.json();
         if (data.status) {
           setMessage('User deleted successfully');
-          // Remove user from local state
           setUsers(users.filter(user => user.id !== userToDelete.id));
         }
       }
@@ -174,7 +170,6 @@ const UserList = () => {
     navigate('/user/add');
   };
 
-  // Clear message after 3 seconds
   useEffect(() => {
     if (message) {
       const timer = setTimeout(() => setMessage(''), 3000);
@@ -214,7 +209,7 @@ const UserList = () => {
             onChange={handleSearch}
             className="search-input"
           />
-          <span className="search-icon">🔍</span>
+          <span className="search-icon"></span>
         </div>
 
         <div className="status-filter">
@@ -284,14 +279,14 @@ const UserList = () => {
                         onClick={() => handleEdit(user.id)}
                         title="Edit User"
                       >
-                        ✏️
+                        Edit
                       </button>
                       <button 
                         className="delete-btn"
                         onClick={() => handleDeleteClick(user)}
                         title="Delete User"
                       >
-                        🗑️
+                        Delete
                       </button>
                     </div>
                   </td>
