@@ -1,11 +1,12 @@
 import React from 'react'
 import { Routes,Route } from 'react-router-dom'
+import Login from './pages/login'
 
 function App() {
   return (
-    <div>
-      
-    </div>
+   <Routes>
+    <Route path='/' element={<Login/>}/>
+   </Routes>
   )
 }
 
